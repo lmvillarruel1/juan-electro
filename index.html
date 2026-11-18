@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Electro Juan Alison</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bar">Envío gratis desde $1.000.000 · 6 cuotas sin interés</div>
+<header class="hd">
+  <div class="in">
+    <a class="logo" href="#inicio">ELECTRO JUAN ALISON</a>
+    <nav class="nav">
+      <button data-cat="Todas">Cocinas</button><button data-cat="Hoffen">Hoffen</button><button data-cat="Acero inoxidable">Acero inoxidable</button><button data-sale>Ofertas</button>
+    </nav>
+    <div class="ic"><button id="sBtn">Buscar</button><button id="fBtn">Favoritos <b id="fN">0</b></button><button id="cBtn">Carrito <b id="cN">0</b></button></div>
+  </div>
+  <div class="srch" id="srch" hidden><input id="q" type="search" placeholder="Buscar cocinas" aria-label="Buscar"></div>
+</header>
+<main id="app"></main>
+<footer>
+  <b>ELECTRO JUAN ALISON</b>
+  <p>Página de demostración: los precios, medidas y características son de ejemplo. Código de descuento de prueba: ALISON10.</p>
+</footer>
+<div id="ov" class="ov"></div>
+<aside id="cart" class="drawer" aria-label="Carrito">
+  <div class="dh"><h2>Tu carrito</h2><button id="cX">Cerrar</button></div>
+  <div id="ship" class="ship"></div>
+  <div id="items" class="items"></div>
+  <div class="df">
+    <div class="cp"><input id="cin" placeholder="Código de descuento" aria-label="Código de descuento"><button id="cok">Aplicar</button></div>
+    <p class="er" id="cer"></p>
+    <div id="tot"></div>
+    <a id="buy" class="btn" href="#checkout">Ir al checkout</a>
+    <a id="wa" class="lnk" target="_blank" rel="noopener" hidden>Prefiero coordinar por WhatsApp</a>
+  </div>
+</aside>
+<script src="productos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

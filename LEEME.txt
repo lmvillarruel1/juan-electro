@@ -1,0 +1,36 @@
+TIENDA DEMO - ELECTRO JUAN ALISON (con checkout y Mercado Pago)
+===============================================================
+VER EN LA PC
+  Clic derecho en index.html > "Open with Live Server" en Visual Studio Code (o doble clic en index.html).
+  Mientras API_URL esté vacío, el checkout funciona en MODO DEMOSTRACIÓN: valida el formulario y arma el pedido
+  por WhatsApp, pero NO cobra.
+
+ARCHIVOS
+  index.html, styles.css, app.js ... la página
+  productos.js ................... datos: productos, precios, WhatsApp, envío gratis, API_URL
+  api/crear-preferencia.js ....... servidor que crea el pago en Mercado Pago
+  img/ ........................... fotos
+
+POR QUÉ HACE FALTA UN SERVIDOR
+  Para cobrar con Mercado Pago hay que usar tu Access Token (credencial privada). Si estuviera en la página,
+  cualquiera podría verla y usarla. Por eso vive en api/crear-preferencia.js, que corre en un servidor.
+  Ese servidor además toma los precios de productos.js y no los que manda el navegador.
+
+PASOS PARA ACTIVAR LOS PAGOS (usando Vercel, que tiene plan gratuito)
+  1) Creá tu cuenta en Mercado Pago y entrá al panel de desarrolladores (mercadopago.com.ar/developers).
+     Creá una aplicación con "Checkout Pro" y copiá las credenciales de PRUEBA.
+  2) Subí esta carpeta a un repositorio de GitHub e importalo en vercel.com (New Project).
+  3) En Vercel, en Settings > Environment Variables, agregá:
+       MP_ACCESS_TOKEN = tu Access Token (primero el de prueba)
+       SITE_URL        = la dirección https de tu tienda, ej. https://mi-tienda.vercel.app (sin barra al final)
+  4) En productos.js poné:  var API_URL = "/api/crear-preferencia";  y subí el cambio.
+  5) Probá una compra con las cuentas y tarjetas de prueba de Mercado Pago (están en su documentación).
+  6) Cuando todo funcione, reemplazá MP_ACCESS_TOKEN por el de producción.
+
+IMPORTANTE
+  - Si cambiás un precio en productos.js, el servidor lo toma solo (usa el mismo archivo).
+  - El cupón de prueba ALISON10 (10%) está en app.js y en api/crear-preferencia.js. Si lo cambiás, cambialo en los dos.
+  - Las "6 cuotas sin interés" del banner dependen de la configuración de tu cuenta de Mercado Pago: ajustá el texto.
+  - Esta versión no guarda pedidos: al pagar, el cliente vuelve a la tienda y puede enviarte sus datos de entrega por
+    WhatsApp. Para registrar pagos automáticamente hay que agregar un "webhook" (notificación) de Mercado Pago.
+  - Nunca pegues el Access Token en productos.js, app.js ni en ningún archivo de la página.
